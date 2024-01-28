@@ -107,7 +107,7 @@ XML support in relation databases usually comes with optional schema validation.
 
 > No schema means arbitrary keys and values can be added to a document and when reading clients have no guaranty on what the fields may contain.
 
-
+It's not that the document datases are schemaless it's more that the schema is not enforced in the DB and it's on the application code.
 
 
 
