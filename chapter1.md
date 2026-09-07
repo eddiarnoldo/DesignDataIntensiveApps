@@ -202,7 +202,31 @@ It only takes a small number of slow requests to hold up the processing of subse
 
 ## Maintanability
 
+Most cost of software is spent on maintenance this involes fixing bugs, maintaning the system in operation adding new functionality, fixing technical debt.
 
+
+
+There are 3 principes that we can use to help on this area:
+
+- Operability
+  
+  - Make it easy for operations to keep the system running
+  
+  - Create tools that can monitor the health of the system, review how multiple systems interact 
+  
+  - Tools for deployment
+  
+  - Maintaning systems security patches
+  
+  - 
+
+- Simplicity
+  
+  - Avoid unneded complexity, make it easy for others to work on the code and prevent unwanted completixy, create good abstractions so people code to them rather to try to work around them
+
+- Evolvability
+  
+  - Use well defined tools to extend the capabilities of the system as Agile
 
 
 
