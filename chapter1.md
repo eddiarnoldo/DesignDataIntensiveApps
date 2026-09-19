@@ -2,9 +2,13 @@
 
 [Reliability](##Reliability)
 
-[Scalability](## Scalability)
+[Scalability](##Scalability)
+
+[Maintanability](##Maintanability)
 
 
+
+## Intro
 
 A data intensive application is build from smaller blocks, these blocks provide commonly needed functionality. The challenge is to know which tools are accessible and know which ones are the ones we need for our applications. There are multiple database systems but one can be more beneficial than the other.
 
@@ -98,11 +102,13 @@ Systems are designed by humans, and humans are unrealiable they make mistakes in
 
 - Implement safe practices for SDLC and training 
 
-
-
 > [!IMPORTANT]
 > 
 > Reliability is important since outages can reprecent financial loss or damage to reputation
+
+
+
+---
 
 
 
@@ -110,25 +116,17 @@ Systems are designed by humans, and humans are unrealiable they make mistakes in
 
 The ability of a system to cope with load, this means that the system can handle increases in load. 
 
-
-
 ### Describing load
 
 Systems can describe load in multiple ways it could be writes per second, read per second, ratio of reads to writes, simultaneous users in a chat. 
 
-
-
 Numbers used to describe load are called `load parameters`
-
-
 
 > [!IMPORTANT]
 > 
 > Sometimes the scaling challenges are not hard due to the volume they need to handle but more to the `fan-out` 
 > 
 > Similar to Twitter fan-out problem for tweets and timelines and users with lots of followers
-
-
 
 #### Twitter homepage
 
@@ -144,11 +142,7 @@ This separate option was to keep a cache for each user feeds and when a user pos
 
 > This means that the posts are more writte heavy than before, however it was discovered to be better since reads are multiple orders of magnitude larger than writtes.
 
-
-
 However as someone will imagine no design is perfect and there could be superstar users with millions of followers if, if we followed the approach described in `option 2` this means we will write into million of cache feeds, for this Twitter created an hybrid system and for these type of users ir fetches the posts as done in `option 1`
-
-
 
 ### Describing Performance
 
@@ -158,53 +152,35 @@ However as someone will imagine no design is perfect and there could be supersta
 
 `Latency` and `Response time` are not the same, the response time is what the client sees (including network time, processing etc), and the latency is the time it's request took to be serviced.
 
+Mean == Average
 
-
-
-
-Mean -> Average
-
-Median = p20 
+Median = p50 
 
 > If we say we have a median response time of 200ms that means that half of the requests are less than 200 and the other half over.
 
-
-
-In a analysys of 100 requests a 95th percentile of 1.5 sec would mean that 95 requests of 100 are on less than 1.5 secs and the other 5 over.
-
-
+In an analysys of 100 requests a 95th percentile of 1.5 sec would mean that 95 requests of 100 are on less than 1.5 secs and the other 5 over.
 
 Percentiles are often used to describe SLO (Service level objectives) and SLA (Service level agreements)
 
 > And SLA may consider a service is up and running if it has median response time of 200ms and a 95th percentile of under 1s
 
-
-
 It only takes a small number of slow requests to hold up the processing of subsequent requests => `head of line blocking`
 
-
-
 *Tail latency amplification* the more requests that are needed to fulfil a user need the larger the chance one request can be slow and delay the whole thing.
-
-
 
 ### Approaches to cope with load
 
 - An application that is appropiate for one level of load is unlikely to do well if we increase that load 10x
 
-- Good architectures often involve a pragmatic approach of doing a mix between large instanceand several smaller.
+- Good architectures often involve a pragmatic approach of doing a mix between large instance and several smaller.
 
 - Some systems are *elastic* meaning that they can add resources as the load increases
 
 > A system that handles 100,000 requests per second of 1KB each one looks very different than a system that handles 3 request per minute of 2GB in size, even that both work with the same data through-put
 
-
-
 ## Maintanability
 
 Most cost of software is spent on maintenance this involes fixing bugs, maintaning the system in operation adding new functionality, fixing technical debt.
-
-
 
 There are 3 principes that we can use to help on this area:
 
@@ -217,19 +193,11 @@ There are 3 principes that we can use to help on this area:
   - Tools for deployment
   
   - Maintaning systems security patches
-  
-  - 
 
 - Simplicity
   
-  - Avoid unneded complexity, make it easy for others to work on the code and prevent unwanted completixy, create good abstractions so people code to them rather to try to work around them
+  - Avoid un-neded complexity, make it easy for others to work on the code and prevent unwanted completixy, create good abstractions so people code to them rather to try to work around them
 
 - Evolvability
   
   - Use well defined tools to extend the capabilities of the system as Agile
-
-
-
-
-
-
